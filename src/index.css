@@ -2,9 +2,25 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom right, #ccccff 0%, #cc66ff 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .App {
   height: 100vh;
-  background: linear-gradient(to bottom right, #ccccff 0%, #cc66ff 100%);
+}
+
+.expanded-header {
+  height: 100vh;
+  transition: height 0.15s ease-in;
+}
+
+.minimized-header {
+  /* ADD FIXED TO TOP */
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 5vh;
+  transition: height 0.25s ease-out;
 }
