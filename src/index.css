@@ -13,14 +13,48 @@ body {
 
 .expanded-header {
   height: 100vh;
-  transition: height 0.15s ease-in;
+  transition:height 0.2s;
+}
+
+.hide-slow {
+  height: 0px;
+  -webkit-transition: background-color 1000ms linear;
+  -ms-transition: background-color 1000ms linear;
+  transition: background-color 1000ms linear;
+  transition:height 1s;
 }
 
 .minimized-header {
-  /* ADD FIXED TO TOP */
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   height: 5vh;
-  transition: height 0.25s ease-out;
+}
+
+.land-page-scroll-img {
+  height: 30px;
+}
+
+.h-40 {
+  height: 40%;
+}
+
+.h-10 {
+  height: 10%;
+}
+
+.big-title {
+  font-size: 3.5em;
+}
+
+@media only screen and (max-width: 767px) {
+  .big-title {
+    font-size: 2.5em;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .big-title {
+    font-size: 2em;
+  }
 }
