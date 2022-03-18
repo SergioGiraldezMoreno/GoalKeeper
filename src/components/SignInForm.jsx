@@ -7,15 +7,15 @@ const SignInForm = () => {
         <form className='p-4 create-account-form mx-auto border border-dark border-2 rounded-3 text-center'>
             <h1 className='text-center mt-3 mb-5'>Start achieving your goals</h1>
             <div className="mb-3 text-start">
-                <label for="exampleInputEmail1" className="form-label">Email address</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                <label for="InputEmail" className="form-label">Email address</label>
+                <input type="email" className="form-control" id="InputEmail" aria-describedby="emailHelp" />
                 <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
             </div>
-            <div className="mb-4 text-start">
-                <label for="exampleInputPassword1" className="form-label">Password</label>
-                <input type="password" className="form-control" id="exampleInputPassword1" />
+            <div className="mb-5 text-start">
+                <label for="InputPassword" className="form-label">Password</label>
+                <input type="password" className="form-control" id="InputPassword" />
             </div>
-            <div className="mb-3">
+            <div className="mb-2">
                 <button type="submit" className="btn btn-dark">Sign in</button>
             </div>
             <div className="mb-3">
