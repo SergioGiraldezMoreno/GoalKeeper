@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import LandPageHeader from "./components/LandPageHeader"
 import LandPageOurMethods from "./components/LandPageOurMethods";
+import LandPageOurTeam from "./components/LandPageOurTeam";
 
 const App = () => {
   const [isOnTopOfPage, setIsOnTopOfPage] = useState
@@ -8,6 +9,7 @@ const App = () => {
   useEffect(() => {
     const onScrollEvent = event => {
       setIsOnTopOfPage(window.pageYOffset === 0)
+      console.log(window.pageYOffset)
     }
     window.addEventListener('scroll', onScrollEvent)
 
@@ -19,6 +21,7 @@ const App = () => {
     <div className="App">
       <LandPageHeader isExpanded={isOnTopOfPage} />
       <LandPageOurMethods />
+      <LandPageOurTeam />
     </div>
   );
 }

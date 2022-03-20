@@ -7,10 +7,6 @@ body {
   background-attachment: fixed;
 }
 
-.App {
-  height: 100vh;
-}
-
 .expanded-header {
   height: 100vh;
   transition:height 0.4s;

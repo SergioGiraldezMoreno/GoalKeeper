@@ -5,7 +5,7 @@ const SignInForm = () => {
   return (
     <div className='container'>
         <form className='p-4 create-account-form mx-auto border border-dark border-2 rounded-3 text-center'>
-            <h1 className='text-center mt-3 mb-5'>Start achieving your goals</h1>
+            <h1 className='text-center mt-3 mb-5'>Welcome back!</h1>
             <div className="mb-3 text-start">
                 <label for="InputEmail" className="form-label">Email address</label>
                 <input type="email" className="form-control" id="InputEmail" aria-describedby="emailHelp" />
