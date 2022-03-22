@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react"
+import React, { useLayoutEffect, useState } from "react"
 import LandPageHeader from "./components/LandPageHeader"
 import LandPageOurMethods from "./components/LandPageOurMethods";
 import LandPageOurTeam from "./components/LandPageOurTeam";
+import { AuthenticationProvider } from "./firebase/authentication";
+
+
 
 const App = () => {
-  const [isOnTopOfPage, setIsOnTopOfPage] = useState
-  (true)
-  useEffect(() => {
+  const [isOnTopOfPage, setIsOnTopOfPage] = useState(true)
+
+  useLayoutEffect(() => {
     const onScrollEvent = event => {
       setIsOnTopOfPage(window.pageYOffset === 0)
-      console.log(window.pageYOffset)
     }
     window.addEventListener('scroll', onScrollEvent)
 
@@ -17,12 +19,15 @@ const App = () => {
       window.removeEventListener('scroll', onScrollEvent)
     }
   }, [])
+
   return (
-    <div className="App">
-      <LandPageHeader isExpanded={isOnTopOfPage} />
-      <LandPageOurMethods />
-      <LandPageOurTeam />
-    </div>
+    <AuthenticationProvider>
+      <div className="App">
+        <LandPageHeader isExpanded={isOnTopOfPage} />
+        <LandPageOurMethods />
+        <LandPageOurTeam />
+      </div>
+    </AuthenticationProvider>
   );
 }
 
