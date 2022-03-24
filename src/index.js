@@ -10,15 +10,23 @@ import App from './App';
 import CreateAccount from './routes/CreateAccount'
 import SignIn from './routes/SignIn';
 import reportWebVitals from './reportWebVitals';
+import PageUnderDevelopment from './routes/PageUnderDevelopment';
+import WelcomePageNewUser from './routes/WelcomePageNewUser';
+import { AuthenticationProvider } from './firebase/authentication';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="create-account" element={<CreateAccount />} />
-      <Route path="sign-in" element={<SignIn />} />
-    </Routes>
-  </BrowserRouter>,
+  <AuthenticationProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="create-account" element={<CreateAccount />} />
+        <Route path="sign-in" element={<SignIn />} />
+        <Route path="new-account" element={<WelcomePageNewUser />} />
+        <Route path="under-development" element={<PageUnderDevelopment />} />
+      </Routes>
+    </BrowserRouter>
+  </AuthenticationProvider>,
+  
   document.getElementById('root')
 );
 

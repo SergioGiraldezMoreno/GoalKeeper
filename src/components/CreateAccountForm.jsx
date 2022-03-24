@@ -1,16 +1,36 @@
 
-import React, { useContext } from 'react'
-import { AuthenticationContext, createUserWithEmail, signInEmailUser } from '../firebase/authentication';
+import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import { createUserPromise, signInEmailPromise } from '../firebase/authentication';
 
 const CreateAccountForm = () => {
-    // const { currentUser } = useContext(AuthenticationContext);
+    
+    let navigate = useNavigate();
     
     const handleUserCreation = (event) => {
         event.preventDefault();
         const { email, password } = event.target.elements;
-        // TODO: make them async 
-        createUserWithEmail(email.value, password.value)
-        signInEmailUser(email.value, password.value)
+        createUserPromise(email.value, password.value).then(
+            function(){
+                signInEmailPromise(email.value, password.value).then(
+                    function(){
+                        // CONGRATULATE FOR USER CREATION
+                        // REDIRECT TO USER PAGE
+                        navigate("/new-account", {replace: true})
+                        console.log('User logged in')
+                    },
+                    function(error){
+                        console.log('Error code:', error.code)
+                        console.log('msg: ', error.message)
+                    }
+                )
+            },
+            function(error){
+                // TODO: SHOW EXPLICIT ERROR
+                console.log('Error code:', error.code)
+                console.log('msg: ', error.message)
+            }
+        )
     };
 
     return (

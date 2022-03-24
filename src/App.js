@@ -2,8 +2,6 @@ import React, { useLayoutEffect, useState } from "react"
 import LandPageHeader from "./components/LandPageHeader"
 import LandPageOurMethods from "./components/LandPageOurMethods";
 import LandPageOurTeam from "./components/LandPageOurTeam";
-import { AuthenticationProvider } from "./firebase/authentication";
-
 
 
 const App = () => {
@@ -20,14 +18,13 @@ const App = () => {
     }
   }, [])
 
+  
   return (
-    <AuthenticationProvider>
       <div className="App">
         <LandPageHeader isExpanded={isOnTopOfPage} />
         <LandPageOurMethods />
         <LandPageOurTeam />
       </div>
-    </AuthenticationProvider>
   );
 }
 
