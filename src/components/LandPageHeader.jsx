@@ -1,15 +1,16 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthenticationContext, signOutPromise } from "../firebase/authentication";
+import { AuthenticationContext } from "../firebase/authentication";
+import { signOutPromise } from "../firebase/userCollectionOperations";
+
 
 const LandPageHeader = ({isExpanded}) => {
 
-  const { currentUser } = useContext(AuthenticationContext);
+  const { currentUserAuth, userFullInfo } = useContext(AuthenticationContext);
 
   const signOut = () => {
     signOutPromise().then(
       function(){
-        // TODO: IMPLEMENT 
         console.log('Successful sign out')
       },
       function(error){
@@ -31,11 +32,11 @@ const LandPageHeader = ({isExpanded}) => {
           </div>
           <div className={isExpanded ? "row justify-content-center h-25 col-10 text-center m-auto": 'd-none'}>
               {/* TODO: IF LOGGED IN SHOW THE NAME INSTEAD OF THE BUTTONS */}
-              <Link className={!!currentUser ? "d-none" : "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark"} to="/create-account">create account</Link>
-              <Link className={!!currentUser ? "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark" : "d-none"} to="/under-development">my account</Link>
+              <Link className={!!currentUserAuth ? "d-none" : "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark"} to="/create-account">create account</Link>
+              <Link className={!!currentUserAuth ? "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark" : "d-none"} to="/under-development">my account</Link>
               <span className='col-1'></span>
-              <Link className={!!currentUser ? "d-none" : "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark"} to="/sign-in">sign in</Link>
-              <button onClick={signOut} className={!!currentUser ? "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark" : "d-none"}>sign out</button>
+              <Link className={!!currentUserAuth ? "d-none" : "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark"} to="/sign-in">sign in</Link>
+              <button onClick={signOut} className={!!currentUserAuth ? "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark" : "d-none"}>sign out</button>
           </div>
           <div className={isExpanded ? "row h-10 d-flex flex-column justify-content-center align-items-end": 'd-none'}>
             <p className='mt-auto mb-0 text-center'>scroll down</p>
@@ -61,12 +62,12 @@ const LandPageHeader = ({isExpanded}) => {
               </li>
             </ul>
             {/* TODO: MY ACCOUNT BUTTON IF LOGGED IN INSTED OF SIGN IN */}
-            <Link className={!!currentUser ? 'd-none' : 'btn btn-light d-none d-md-block ms-auto'}  to="/sign-in">sign in</Link>
-            <Link className={!!currentUser ? 'text-decoration-none d-none d-md-block ms-auto bg-dark text-white me-3' : 'd-none'} to="/under-development">my account</Link>
-            <button onClick={signOut} className={!!currentUser ? "btn btn-light d-none d-md-block" : "d-none"}>sign out</button>
-            <Link className={!!currentUser ? 'd-none' : 'btn btn-light d-md-none col-8 mt-5 mb-2'}  to="/sign-in">sign in</Link>
-            <Link className={!!currentUser ? 'btn btn-light d-md-none col-8 mt-5 mb-2' : 'd-none'} to="/under-development">my account</Link>
-            <button onClick={signOut} className={!!currentUser ? "btn btn-light d-md-none col-8 mb-2" : "d-none"}>sign out</button>
+            <Link className={!!currentUserAuth ? 'd-none' : 'btn btn-light d-none d-md-block ms-auto'}  to="/sign-in">sign in</Link>
+            <Link className={!!currentUserAuth ? 'text-decoration-none d-none d-md-block ms-auto bg-dark text-white me-3' : 'd-none'} to="/under-development">my account</Link>
+            <button onClick={signOut} className={!!currentUserAuth ? "btn btn-light d-none d-md-block" : "d-none"}>sign out</button>
+            <Link className={!!currentUserAuth ? 'd-none' : 'btn btn-light d-md-none col-8 mt-5 mb-2'}  to="/sign-in">sign in</Link>
+            <Link className={!!currentUserAuth ? 'btn btn-light d-md-none col-8 mt-5 mb-2' : 'd-none'} to="/under-development">my account</Link>
+            <button onClick={signOut} className={!!currentUserAuth ? "btn btn-light d-md-none col-8 mb-2" : "d-none"}>sign out</button>
           </div>
         </nav>
       </div>

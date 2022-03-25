@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
 import firebaseApp from "./firebaseConfig";
-import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { fetchUserInfoByEmail } from "./userCollectionOperations";
 
 
 const AuthenticationContext = React.createContext();
 
 const AuthenticationProvider = ({ children }) => {
-    const [currentUser, setCurrentUser] = useState(null);
+    const [currentUserAuth, setCurrentUserAuth] = useState(null);
+    const [currentUserInfo, setCurrentUserInfo] = useState(null)
 
     useEffect(() => {
         const auth = getAuth(firebaseApp)
         const unlisten = onAuthStateChanged(auth, user => {
             if (user) {
-                setCurrentUser(user)
+                setCurrentUserAuth(user)
+                const currentUserInfo = fetchUserInfoByEmail(user.email)
+                setCurrentUserInfo(currentUserInfo)
                 console.log("authenticated", user.email);
             } else {
-                setCurrentUser(null)
+                setCurrentUserAuth(null)
                 console.log("signed out");
             }
         });
@@ -26,48 +30,27 @@ const AuthenticationProvider = ({ children }) => {
     }, []);
 
     
+    useEffect(() => {
+        const setCurrentUserInfoOnLoad = async () => {
+            if (currentUserAuth) {
+                const currentUserInfo = fetchUserInfoByEmail(currentUserAuth.email)
+                setCurrentUserInfo(currentUserInfo)
+                console.log('user id:', currentUserInfo.uid)
+            }
+        }
+
+        setCurrentUserInfoOnLoad();
+    }, []);
+
+
     return (
-        <AuthenticationContext.Provider value={{currentUser}}>
+        <AuthenticationContext.Provider value={{currentUserAuth, currentUserInfo}}>
             {children}
         </AuthenticationContext.Provider>
     );
 };
 
-
-function createUserPromise(email, password) {
-    let promise = new Promise((onSuccess, onFail) => {
-        const auth = getAuth(firebaseApp)
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(onSuccess)
-            .catch(onFail);
-    })
-    return promise
-}
-
-function signInEmailPromise(email, password) {
-    let promise = new Promise((onSuccess, onFail) => {
-        const auth = getAuth(firebaseApp)
-        signInWithEmailAndPassword(auth, email, password)
-            .then(onSuccess)
-            .catch(onFail);
-    })
-    return promise
-}
-
-function signOutPromise() {
-    let promise = new Promise((onSuccess, onFail) => {
-        const auth = getAuth(firebaseApp)
-        signOut(auth)
-            .then(onSuccess)
-            .catch(onFail);
-    })
-    return promise
-}
-
 export {
     AuthenticationContext,
-    AuthenticationProvider,
-    createUserPromise,
-    signInEmailPromise,
-    signOutPromise
+    AuthenticationProvider
 }

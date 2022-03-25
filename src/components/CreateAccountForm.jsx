@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { createUserPromise, signInEmailPromise } from '../firebase/authentication';
+import { createUserPromise, signInEmailPromise } from '../firebase/userCollectionOperations';
 
 const CreateAccountForm = () => {
     

@@ -4,11 +4,11 @@ import { AuthenticationContext } from '../firebase/authentication';
 
 const WelcomePageNewUser = () => {
 
-    const { currentUser } = useContext(AuthenticationContext);
+    const { currentUserAuth } = useContext(AuthenticationContext);
 
     return (
         <div className='container text-center'>
-            <h1>Welcome {currentUser.email}!</h1>
+            <h1>Welcome {currentUserAuth.email}!</h1>
             <Link className='btn btn-outline-dark' to="/">Set up my profile</Link>    
             <Link to="/create-account" className="text-decoration-underline text-dark">skip configuration</Link>    
         </div>

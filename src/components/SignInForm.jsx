@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { signInEmailPromise } from '../firebase/authentication';
+import { signInEmailPromise } from '../firebase/userCollectionOperations';
 
 const SignInForm = () => {
 
