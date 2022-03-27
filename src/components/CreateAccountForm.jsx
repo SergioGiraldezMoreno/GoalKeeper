@@ -14,8 +14,6 @@ const CreateAccountForm = () => {
             function(){
                 signInEmailPromise(email.value, password.value).then(
                     function(){
-                        // CONGRATULATE FOR USER CREATION
-                        // REDIRECT TO USER PAGE
                         navigate("/new-account", {replace: true})
                         console.log('User logged in')
                     },

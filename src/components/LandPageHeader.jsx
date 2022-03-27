@@ -6,7 +6,7 @@ import { signOutPromise } from "../firebase/userCollectionOperations";
 
 const LandPageHeader = ({isExpanded}) => {
 
-  const { currentUserAuth, userFullInfo } = useContext(AuthenticationContext);
+  const { currentUserAuth } = useContext(AuthenticationContext);
 
   const signOut = () => {
     signOutPromise().then(
@@ -18,7 +18,7 @@ const LandPageHeader = ({isExpanded}) => {
         console.log('(Sign out) msg: ', error.message)
       }
     )
-};
+  };
 
 
   return (
@@ -33,7 +33,7 @@ const LandPageHeader = ({isExpanded}) => {
           <div className={isExpanded ? "row justify-content-center h-25 col-10 text-center m-auto": 'd-none'}>
               {/* TODO: IF LOGGED IN SHOW THE NAME INSTEAD OF THE BUTTONS */}
               <Link className={!!currentUserAuth ? "d-none" : "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark"} to="/create-account">create account</Link>
-              <Link className={!!currentUserAuth ? "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark" : "d-none"} to="/under-development">my account</Link>
+              <Link className={!!currentUserAuth ? "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark" : "d-none"} to="/user-goals">my account</Link>
               <span className='col-1'></span>
               <Link className={!!currentUserAuth ? "d-none" : "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark"} to="/sign-in">sign in</Link>
               <button onClick={signOut} className={!!currentUserAuth ? "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark" : "d-none"}>sign out</button>
@@ -62,12 +62,18 @@ const LandPageHeader = ({isExpanded}) => {
               </li>
             </ul>
             {/* TODO: MY ACCOUNT BUTTON IF LOGGED IN INSTED OF SIGN IN */}
+            <div className={!!currentUserAuth ? "nav-item dropdown ms-auto" : "d-none"}>
+              <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img className="header-img-size" src={require('../images/white-profile-border-icon.png')} alt="profile-picture" />
+              </a>
+              <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                <li><Link className="dropdown-item" to="/user-goals">Goals</Link></li>
+                <li><Link className="dropdown-item" to="/under-developmen">Settings</Link></li>
+                <li><button className="dropdown-item" onClick={signOut}>Sign out</button></li>
+              </ul>
+            </div>
             <Link className={!!currentUserAuth ? 'd-none' : 'btn btn-light d-none d-md-block ms-auto'}  to="/sign-in">sign in</Link>
-            <Link className={!!currentUserAuth ? 'text-decoration-none d-none d-md-block ms-auto bg-dark text-white me-3' : 'd-none'} to="/under-development">my account</Link>
-            <button onClick={signOut} className={!!currentUserAuth ? "btn btn-light d-none d-md-block" : "d-none"}>sign out</button>
             <Link className={!!currentUserAuth ? 'd-none' : 'btn btn-light d-md-none col-8 mt-5 mb-2'}  to="/sign-in">sign in</Link>
-            <Link className={!!currentUserAuth ? 'btn btn-light d-md-none col-8 mt-5 mb-2' : 'd-none'} to="/under-development">my account</Link>
-            <button onClick={signOut} className={!!currentUserAuth ? "btn btn-light d-md-none col-8 mb-2" : "d-none"}>sign out</button>
           </div>
         </nav>
       </div>

@@ -1,19 +1,33 @@
-import { collection, addDoc, getDocs, query, where } from "firebase/firestore"
+import { collection, addDoc, getDocs, query, where, updateDoc, doc } from "firebase/firestore"
 import firebaseApp, { db } from "./firebaseConfig"
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 const usersCollectionRef = collection(db, "users")
 
 const createUserInfo = async (email) => {
-    await addDoc(usersCollectionRef, { email: email})
+    const userRef = await addDoc(usersCollectionRef, { email: email, nickName: ''})
+    await addDoc(collection(db, 'users', userRef.id, 'goals'), { title: 'set up my account', done: false })
 }
 
-const fetchUserInfoByEmail = async (email) => {
-    const userByEmailQuery =  query(collection(db, "users"), where("email", "==", email));
-    const querySnapshot = await getDocs(userByEmailQuery);
-    if (querySnapshot.docs.length === 1){
-        return querySnapshot.docs[0]
-    }
+
+const getUserInfoByEmailPromise = async (email) => {
+    let promise = new Promise((onSuccess, onFail) => {
+        const userByEmailQuery =  query(collection(db, "users"), where("email", "==", email));    
+        getDocs(userByEmailQuery)
+            .then(onSuccess)
+            .catch(onFail);
+    })
+    return promise
+}
+
+const updateUserInfoPromise = async (userInfoId, info) => {
+    let promise = new Promise((onSuccess, onFail) => {
+        const userInfoRef = doc(db, 'users', userInfoId);        
+        updateDoc(userInfoRef, info)
+            .then(onSuccess)
+            .catch(onFail);
+    })
+    return promise
 }
 
 function createUserPromise(email, password) {
@@ -21,8 +35,8 @@ function createUserPromise(email, password) {
         const auth = getAuth(firebaseApp)
         createUserWithEmailAndPassword(auth, email, password)
             .then(response => {
-                onSuccess(response)
                 createUserInfo(email)
+                onSuccess(response)
             })
             .catch(onFail);
     })
@@ -53,5 +67,6 @@ export {
     createUserPromise,
     signInEmailPromise,
     signOutPromise,
-    fetchUserInfoByEmail
+    updateUserInfoPromise,
+    getUserInfoByEmailPromise
 }

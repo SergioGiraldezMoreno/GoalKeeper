@@ -12,7 +12,7 @@ const SignInForm = () => {
         signInEmailPromise(email.value, password.value).then(
             function(){
                 // REDIRECT TO USER PAGE
-                navigate("/", {replace: true})
+                navigate("/user-goals", {replace: true})
                 console.log('User logged in')
             },
             function(error){

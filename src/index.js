@@ -11,8 +11,10 @@ import CreateAccount from './routes/CreateAccount'
 import SignIn from './routes/SignIn';
 import reportWebVitals from './reportWebVitals';
 import PageUnderDevelopment from './routes/PageUnderDevelopment';
+import UserGoals from './routes/UserGoals';
 import WelcomePageNewUser from './routes/WelcomePageNewUser';
 import { AuthenticationProvider } from './firebase/authentication';
+
 
 ReactDOM.render(
   <AuthenticationProvider>
@@ -22,6 +24,7 @@ ReactDOM.render(
         <Route path="create-account" element={<CreateAccount />} />
         <Route path="sign-in" element={<SignIn />} />
         <Route path="new-account" element={<WelcomePageNewUser />} />
+        <Route path="user-goals" element={<UserGoals />} />
         <Route path="under-development" element={<PageUnderDevelopment />} />
       </Routes>
     </BrowserRouter>

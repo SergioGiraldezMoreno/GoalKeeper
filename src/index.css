@@ -24,16 +24,20 @@ body {
   height: 5vh;
 }
 
+.header-img-size {
+  height: 4vh;
+}
+
 .land-page-scroll-img {
   height: 30px;
 }
 
-.h-40 {
-  height: 40%;
+.h-90 {
+  height: 90%;
 }
 
-.h-10 {
-  height: 10%;
+.h-40 {
+  height: 40%;
 }
 
 .big-title {
@@ -43,6 +47,11 @@ body {
 .create-account-form {
   max-width: 600px;
 }
+
+.goals-top-panel {
+  height: 15vh;
+}
+
 
 
 @media only screen and (max-width: 767px) {
