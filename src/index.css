@@ -7,6 +7,16 @@ body {
   background-attachment: fixed;
 }
 
+.btn-primary {
+  background-color: #cc66ff;
+  border-color: #cc66ff;
+}
+
+.btn-primary:hover {
+  background-color: #bf3fff;
+  border-color: #bf3fff;
+}
+
 .expanded-header {
   height: 100vh;
   transition:height 0.4s;
@@ -51,7 +61,6 @@ body {
 .goals-top-panel {
   height: 15vh;
 }
-
 
 
 @media only screen and (max-width: 767px) {

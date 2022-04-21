@@ -1,14 +1,11 @@
 import React from 'react'
 
 const UserCurrentGoalsSection = () => {
-    const handleGoalCreation = (event) => {
-        console.log('under dev: create goal.')
-    }
     return (
         <section className='mt-4'>
             <div className='row d-flex border-bottom border-2 border-dark pb-1'>
                 <h3 className='col-11'>Active goals</h3>
-                <button onClick={handleGoalCreation} className="col-1 btn btn-dark fw-bold">+</button>
+                <button className="col-1 btn btn-dark fw-bold"  data-bs-toggle="modal" data-bs-target="#exampleModal">+</button>
             </div>
             <div>
                 <table className='table table-hover border-dark'>

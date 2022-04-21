@@ -3,7 +3,7 @@ import { AuthenticationContext } from '../firebase/authentication'
 import TrophiesSection from './TrophiesSection'
 
 const UserGoalsTopSection = () => {
-    const { currentUserAuth, currentUserInfo } = useContext(AuthenticationContext)
+    const { currentUserInfo } = useContext(AuthenticationContext)
     return (
         <section className='goals-top-panel'>
             <div className='row h-100'>
