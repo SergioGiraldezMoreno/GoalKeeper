@@ -48,7 +48,7 @@ const AuthenticationProvider = ({ children }) => {
         }
 
         setCurrentUserInfoOnLoad();
-    }, []);
+    }, [currentUserAuth]);
 
 
     const loadCurrentUserInfo = async () => {
