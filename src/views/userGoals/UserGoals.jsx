@@ -1,14 +1,14 @@
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import React, { useContext, useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
-import CreateGoalPopup from '../components/CreateGoalPopup'
-import GenericHeader from '../components/GenericHeader'
-import UserAchievedGoalsSection from '../components/UserAchievedGoalsSection'
-import UserCurrentGoalsSection from '../components/UserCurrentGoalsSection'
-import UserGoalsTopSection from '../components/UserGoalsTopSection'
-import { AuthenticationContext } from '../firebase/authentication'
-import firebaseApp from '../firebase/firebaseConfig'
-import { getUserInfoByEmailPromise } from '../firebase/userCollectionOperations'
+import CreateGoalPopup from './components/CreateGoalPopup'
+import GenericHeader from '../../components/GenericHeader'
+import UserAchievedGoalsSection from './components/UserAchievedGoalsSection'
+import UserCurrentGoalsSection from './components/UserCurrentGoalsSection'
+import UserGoalsTopSection from './components/UserGoalsTopSection'
+import { AuthenticationContext } from '../../firebase/authentication'
+import firebaseApp from '../../firebase/firebaseConfig'
+import { getUserInfoByEmailPromise } from '../../firebase/userCollectionOperations'
 
 const UserGoals = () => {
     

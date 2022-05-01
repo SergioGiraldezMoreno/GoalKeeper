@@ -51,11 +51,11 @@ const CreateGoalPopup = () => {
     }
 
     const setHoverSrc = (event) => {
-        event.target.src = require('../images/add-icon-hover.png')
+        event.target.src = require('../../../images/add-icon-hover.png')
     }
 
     const resetHoverSrc = (event) => {
-        event.target.src = require('../images/add-icon.png')
+        event.target.src = require('../../../images/add-icon.png')
     }
 
     const getSortedMilestones = (milestones) => {
@@ -107,14 +107,14 @@ const CreateGoalPopup = () => {
                                             <div className='d-flex align-items-center my-1' key={milestone.id}>
                                                 <MilestoneField milestone={milestone} updateMilestoneHandler={updateMilestone} />
                                                 <button className='btn p-0 mx-1' onClick={removeMilestone} style={{maxHeight:"1.5em", height:"1.5em"}}>
-                                                    <img className='h-100' src={require('../images/remove-icon.png')} id={milestone.id} alt="" />
+                                                    <img className='h-100' src={require('../../../images/remove-icon.png')} id={milestone.id} alt="" />
                                                 </button>
                                             </div>
                                         )}
                                     )}
                                 </div>
                                 <button className='btn p-0 mx-1' onClick={addMilestone} style={{width:"2.5em", height:"2.5em"}}>
-                                    <img onMouseOver={setHoverSrc} onMouseLeave={resetHoverSrc} className='h-100' src={require('../images/add-icon.png')} alt="" />
+                                    <img onMouseOver={setHoverSrc} onMouseLeave={resetHoverSrc} className='h-100' src={require('../../../images/add-icon.png')} alt="" />
                                 </button>
                             </fieldset>
                         </form>

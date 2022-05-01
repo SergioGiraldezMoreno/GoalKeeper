@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { createUserPromise, signInEmailPromise } from '../firebase/userCollectionOperations';
+import { createUserPromise, signInEmailPromise } from '../../../firebase/userCollectionOperations';
 
 const CreateAccountForm = () => {
     
@@ -33,7 +33,7 @@ const CreateAccountForm = () => {
 
     return (
         <div className='container'>
-            <form onSubmit={handleUserCreation} className='p-4 create-account-form mx-auto border border-dark border-2 rounded-3 text-center'>
+            <form onSubmit={handleUserCreation} className='p-4 small-form mx-auto border border-dark border-2 rounded-3 text-center'>
                 <h1 className='text-center mt-3 mb-5'>Start achieving your goals</h1>
                 <div className="mb-3 text-start">
                     <label htmlFor="InputEmail" className="form-label">Email address</label>

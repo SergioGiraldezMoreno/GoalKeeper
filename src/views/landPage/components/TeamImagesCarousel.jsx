@@ -5,7 +5,7 @@ const TeamImagesCarousel = () => {
         <div className="row row-cols-1 row-cols-md-3 g-4">
             <div className="col">
                 <div className="card h-100 bg-dark text-white">
-                    <img src={require('../images/designer-portrait.jpg')} className="card-img-top" alt="..." />
+                    <img src={require('../../../images/designer-portrait.jpg')} className="card-img-top" alt="designer member portrait" />
                     <div className="card-body ">
                         <h4 className="card-title" style={{color: '#cc66ff'}}>Designer</h4>
                         <h6 className="card-text" style={{color: '#ccccff'}}>Sergi Giraldez</h6>
@@ -15,7 +15,7 @@ const TeamImagesCarousel = () => {
             </div>
             <div className="col">
                 <div className="card h-100 bg-dark text-white">
-                    <img src={require('../images/frontend-portrait.jpg')} className="card-img-top" alt="..." />
+                    <img src={require('../../../images/frontend-portrait.jpg')} className="card-img-top" alt="frontend member portrait" />
                     <div className="card-body ">
                         <h4 className="card-title" style={{color: '#cc66ff'}}>Front-end Dev</h4>
                         <h6 className="card-text" style={{color: '#ccccff'}}>Sergi Giraldez</h6>
@@ -25,7 +25,7 @@ const TeamImagesCarousel = () => {
             </div>
             <div className="col">
                 <div className="card h-100 bg-dark text-white">
-                    <img src={require('../images/backend-portrait.jpg')} className="card-img-top" alt="..." />
+                    <img src={require('../../../images/backend-portrait.jpg')} className="card-img-top" alt="backend member portrait" />
                     <div className="card-body ">
                         <h4 className="card-title" style={{color: '#cc66ff'}}>Back-end Dev</h4>
                         <h6 className="card-text" style={{color: '#ccccff'}}>Sergi Giraldez</h6>

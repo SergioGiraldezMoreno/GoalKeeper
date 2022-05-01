@@ -1,6 +1,6 @@
 import React from 'react'
-import GenericHeader from '../components/GenericHeader'
-import CreateAccountForm from '../components/CreateAccountForm'
+import GenericHeader from '../../components/GenericHeader'
+import CreateAccountForm from './components/CreateAccountForm'
 
 const CreateAccount = () => {
     return (

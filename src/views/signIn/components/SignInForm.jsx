@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { signInEmailPromise } from '../firebase/userCollectionOperations';
+import { signInEmailPromise } from '../../../firebase/userCollectionOperations';
 
 const SignInForm = () => {
 
@@ -24,7 +24,7 @@ const SignInForm = () => {
 
     return (
         <div className='container'>
-            <form onSubmit={handleUserSignIn} className='p-4 create-account-form mx-auto border border-dark border-2 rounded-3 text-center'>
+            <form onSubmit={handleUserSignIn} className='p-4 small-form mx-auto border border-dark border-2 rounded-3 text-center'>
                 <h1 className='text-center mt-3 mb-5'>Welcome back!</h1>
                 <div className="mb-3 text-start">
                     <label htmlFor="InputEmail" className="form-label">Email address</label>

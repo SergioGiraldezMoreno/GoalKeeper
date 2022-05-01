@@ -17,29 +17,11 @@ body {
   border-color: #bf3fff;
 }
 
-.expanded-header {
-  height: 100vh;
-  transition:height 0.4s;
-}
-
-.hide-slow {
-  height: 0px;
-  transition: height 0.8s;
-}
-
 .generic-header {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   height: 5vh;
-}
-
-.header-img-size {
-  height: 4vh;
-}
-
-.land-page-scroll-img {
-  height: 30px;
 }
 
 .h-90 {
@@ -54,12 +36,8 @@ body {
   font-size: 3.5em;
 }
 
-.create-account-form {
+.small-form {
   max-width: 600px;
-}
-
-.goals-top-panel {
-  height: 15vh;
 }
 
 

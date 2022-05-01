@@ -2,7 +2,7 @@ import React from 'react'
 
 const LandPageOurMethods = () => {
   return (
-    <div className='h-100 text-center container' style={{paddingTop: '14vh'}}>
+    <div id='our_methods_section' className='h-100 text-center container' style={{paddingTop: '14vh'}}>
         <h1 className='fw-bold'>OUR METHODS</h1>
         <div className='p-3'>
           <div className='text-md-start border-bottom border-dark border-2 my-5 my-md-3'>

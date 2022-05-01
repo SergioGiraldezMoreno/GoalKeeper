@@ -7,12 +7,12 @@ import {
 } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import CreateAccount from './routes/CreateAccount'
-import SignIn from './routes/SignIn';
+import CreateAccount from './views/createAccount/CreateAccount'
+import SignIn from './views/signIn/SignIn';
 import reportWebVitals from './reportWebVitals';
-import PageUnderDevelopment from './routes/PageUnderDevelopment';
-import UserGoals from './routes/UserGoals';
-import WelcomePageNewUser from './routes/WelcomePageNewUser';
+import PageUnderDevelopment from './components/PageUnderDevelopment';
+import UserGoals from './views/userGoals/UserGoals';
+import WelcomePageNewUser from './views/welcomePageNewUser/WelcomePageNewUser';
 import { AuthenticationProvider } from './firebase/authentication';
 
 

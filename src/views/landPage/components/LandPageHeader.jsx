@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthenticationContext } from "../firebase/authentication";
-import { signOutPromise } from "../firebase/userCollectionOperations";
+import { AuthenticationContext } from "../../../firebase/authentication";
+import { signOutPromise } from "../../../firebase/userCollectionOperations";
+import '../styles/LandPageHeader.css';
 
 
 const LandPageHeader = ({isExpanded}) => {
@@ -28,7 +29,7 @@ const LandPageHeader = ({isExpanded}) => {
             <h1 className="fw-bold big-title">Welcome to Goal Keeper</h1>
           </div>
           <div className={isExpanded ? "row h-25": 'd-none'}>
-            <img className='h-100 w-auto m-auto' src={require('../images/trophy.png')} alt="trophy image" />
+            <img className='h-100 w-auto m-auto' src={require('../../../images/trophy.png')} alt="trophy" />
           </div>
           <div className={isExpanded ? "row justify-content-center h-25 col-10 text-center m-auto": 'd-none'}>
               {/* TODO: IF LOGGED IN SHOW THE NAME INSTEAD OF THE BUTTONS */}
@@ -40,7 +41,7 @@ const LandPageHeader = ({isExpanded}) => {
           </div>
           <div className={isExpanded ? "row h-10 d-flex flex-column justify-content-center align-items-end": 'd-none'}>
             <p className='mt-auto mb-0 text-center'>scroll down</p>
-            <img className={isExpanded ? 'mx-auto w-auto land-page-scroll-img' : 'd-none'} src={require('../images/double-arrow.png')} alt="scroll down" />
+            <img className={isExpanded ? 'mx-auto w-auto land-page-scroll-img' : 'd-none'} src={require('../../../images/double-arrow.png')} alt="scroll down" />
           </div>
       </div>
       <div className={isExpanded ? 'd-none' : 'generic-header text-light bg-dark text-center'}>
@@ -52,23 +53,23 @@ const LandPageHeader = ({isExpanded}) => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" href="#">Our methods</a> {/* TODO: MOVE PAGE TO TITLE DOM */}
+                <a className="nav-link" href="#our_methods_section">Our methods</a> {/* TODO: MOVE PAGE TO TITLE DOM */}
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Our whatever</a> {/* TODO: MOVE PAGE TO TITLE DOM */}
+                <a className="nav-link" href="#our_team_section">Our whatever</a> {/* TODO: MOVE PAGE TO TITLE DOM */}
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Our team</a> {/* TODO: MOVE PAGE TO TITLE DOM */}
+                <a className="nav-link" href="#our_team_section">Our team</a> {/* TODO: MOVE PAGE TO TITLE DOM */}
               </li>
             </ul>
             {/* TODO: MY ACCOUNT BUTTON IF LOGGED IN INSTED OF SIGN IN */}
             <div className={!!currentUserAuth ? "nav-item dropdown ms-auto" : "d-none"}>
-              <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img className="header-img-size" src={require('../images/white-profile-border-icon.png')} alt="profile-picture" />
+              <a className="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img className="header-img-size" src={require('../../../images/white-profile-border-icon.png')} alt="profil user" />
               </a>
               <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                 <li><Link className="dropdown-item" to="/user-goals">Goals</Link></li>
-                <li><Link className="dropdown-item" to="/under-developmen">Settings</Link></li>
+                <li><Link className="dropdown-item" to="/under-development">Settings</Link></li>
                 <li><button className="dropdown-item" onClick={signOut}>Sign out</button></li>
               </ul>
             </div>

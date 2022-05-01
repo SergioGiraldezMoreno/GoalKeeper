@@ -1,6 +1,6 @@
 import React from 'react'
-import GenericHeader from '../components/GenericHeader'
-import SignInForm from '../components/SignInForm'
+import GenericHeader from '../../components/GenericHeader'
+import SignInForm from './components/SignInForm'
 
 const SignIn = () => {
     return (
