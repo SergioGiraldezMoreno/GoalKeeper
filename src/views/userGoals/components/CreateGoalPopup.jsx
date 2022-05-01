@@ -99,8 +99,18 @@ const CreateGoalPopup = () => {
                                     </select>
                                 </div>
                             </div>
+                            {/* TODO: add more fields */}
                             <fieldset className='form-group border p-2'>
-                                <legend className="col-form-label col-sm-2 pt-0">Milestones</legend>
+                                <div className='row'>
+                                    <h3 className='d-block col'>Milestones</h3>
+                                    <div className='col'>
+                                        {/* TODO: add event to show alerts in milestones when this checkbox is enabled */}
+                                        <input type="checkbox" className="form-check-input" id="showAlertsCheck" />
+                                        <label className="form-check-label ps-1" htmlFor="showAlertsCheck">
+                                            enable alerts
+                                        </label>
+                                    </div>
+                                </div>
                                 <div className="mb-3 text-start row">
                                     {getSortedMilestones(milestones).map(milestone => {
                                         return (
