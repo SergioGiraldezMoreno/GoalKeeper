@@ -37,7 +37,7 @@ const UserGoals = () => {
             <>  
                 <UserOptionsHeader />
                 <CreateGoalPopup />
-                <div className='container py-3'>
+                <div className='container py-5 py-md-3'>
                     <UserGoalsTopSection />
                     <UserCurrentGoalsSection />
                     <UserAchievedGoalsSection />

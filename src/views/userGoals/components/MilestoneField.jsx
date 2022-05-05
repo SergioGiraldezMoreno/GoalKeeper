@@ -29,8 +29,7 @@ const MilestoneField = (props) => {
         <div className='col d-flex align-items-center'>
             <input type="text" defaultValue={milestone.title} name="milestone" className="form-control me-2" placeholder='milestone title' onChange={updateTitleInfo} />
             <input type="date" defaultValue={milestone.date} name="date" className="form-control" id="InputDeadline"  onChange={updateDateInfo} required/>
-            {/* TODO: FIX CLEAR BUTTON FOR SMALL SCREENS (MOBILE) */}
-            <button className='btn' onClick={clearDate} style={{position: "absolute", marginLeft: "71%", color:"red"}}>x</button>
+            <button className='btn d-none d-md-block' onClick={clearDate} style={{position: "absolute", marginLeft: "71%", color:"red"}}>x</button>
         </div>
     )
 }

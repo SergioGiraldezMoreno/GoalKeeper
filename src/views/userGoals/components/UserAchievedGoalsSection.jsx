@@ -3,7 +3,7 @@ import React from 'react'
 const UserAchievedGoalsSection = () => {
   return (
     <section className='mt-4'>
-            <div className='row d-flex border-bottom border-2 border-dark pb-1 pt-2'>
+            <div className='row d-flex border-bottom border-2 border-dark pb-1 pt-2 px-1'>
                 <h3 className='col-12'>Achieved goals</h3>
             </div>
             <div>

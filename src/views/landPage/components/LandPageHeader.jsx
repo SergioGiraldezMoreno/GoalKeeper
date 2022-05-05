@@ -31,13 +31,17 @@ const LandPageHeader = ({isExpanded}) => {
           <div className={isExpanded ? "row h-25": 'd-none'}>
             <img className='h-100 w-auto m-auto' src={require('../../../images/trophy.png')} alt="trophy" />
           </div>
-          <div className={isExpanded ? "row justify-content-center h-25 col-10 text-center m-auto": 'd-none'}>
-              {/* TODO: IF LOGGED IN SHOW THE NAME INSTEAD OF THE BUTTONS */}
-              <Link className={!!currentUserAuth ? "d-none" : "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark"} to="/create-account">create account</Link>
-              <Link className={!!currentUserAuth ? "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark" : "d-none"} to="/user-goals">my account</Link>
-              <span className='col-1'></span>
-              <Link className={!!currentUserAuth ? "d-none" : "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark"} to="/sign-in">sign in</Link>
-              <button onClick={signOut} className={!!currentUserAuth ? "my-auto border-3 col-5 col-lg-3 btn btn-outline-dark" : "d-none"}>sign out</button>
+          <div className={isExpanded ? "row align-content-around justify-content-center h-25 col-10 text-center m-auto": 'd-none'}>
+              <div className={!!currentUserAuth ? "d-none" : "row"}>
+                <Link className={"ms-auto my-auto border-3 col-5 col-lg-3 btn btn-outline-dark h-100"} to="/create-account">create account</Link>
+                <span className='col-1'></span>
+                <Link className={"me-auto my-auto border-3 col-5 col-lg-3 btn btn-outline-dark h-100"} to="/sign-in">sign in</Link>
+              </div>
+              <div className={!!currentUserAuth ? "row" : "d-none"}>
+                <Link className={"ms-auto my-auto border-3 col-5 col-lg-3 btn btn-outline-dark h-100"} to="/user-goals">my account</Link>
+                <span className='col-1'></span>
+                <button onClick={signOut} className={"me-auto my-auto border-3 col-5 col-lg-3 btn btn-outline-dark h-100"}>sign out</button>
+              </div>
           </div>
           <div className={isExpanded ? "row h-10 d-flex flex-column justify-content-center align-items-end": 'd-none'}>
             <p className='mt-auto mb-0 text-center'>scroll down</p>
@@ -46,23 +50,19 @@ const LandPageHeader = ({isExpanded}) => {
       </div>
       <div className={isExpanded ? 'd-none' : 'generic-header text-light bg-dark text-center'}>
         <nav className="navbar navbar-expand-md navbar-dark bg-dark px-3">
-          <Link className="navbar-brand" to="/">GoalKeeper</Link> {/* TODO: ADD LINK TO TOP */}
+          <Link className="navbar-brand" to="/" >GoalKeeper</Link> {/* TODO: ADD LINK TO TOP */}
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" href="#our_methods_section">Our methods</a> {/* TODO: MOVE PAGE TO TITLE DOM */}
+                <a className="nav-link" href="#our_methods_section">Our methods</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#our_team_section">Our whatever</a> {/* TODO: MOVE PAGE TO TITLE DOM */}
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#our_team_section">Our team</a> {/* TODO: MOVE PAGE TO TITLE DOM */}
+                <a className="nav-link" href="#our_team_section">Our team</a>
               </li>
             </ul>
-            {/* TODO: MY ACCOUNT BUTTON IF LOGGED IN INSTED OF SIGN IN */}
             <div className={!!currentUserAuth ? "d-none d-md-block nav-item dropdown ms-auto" : "d-none"}>
               <a className="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img className="header-img-size" src={require('../../../images/white-profile-border-icon.png')} alt="profil user" />
