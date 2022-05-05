@@ -1,11 +1,11 @@
 import React from 'react'
-import GenericHeader from '../../components/GenericHeader'
+import UserOptionsHeader from '../../components/UserOptionsHeader'
 import SignInForm from './components/SignInForm'
 
 const SignIn = () => {
     return (
         <>
-            <GenericHeader />
+            <UserOptionsHeader />
             <div className='p-5'>
                 <SignInForm />
             </div>

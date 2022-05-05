@@ -63,7 +63,7 @@ const LandPageHeader = ({isExpanded}) => {
               </li>
             </ul>
             {/* TODO: MY ACCOUNT BUTTON IF LOGGED IN INSTED OF SIGN IN */}
-            <div className={!!currentUserAuth ? "nav-item dropdown ms-auto" : "d-none"}>
+            <div className={!!currentUserAuth ? "d-none d-md-block nav-item dropdown ms-auto" : "d-none"}>
               <a className="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img className="header-img-size" src={require('../../../images/white-profile-border-icon.png')} alt="profil user" />
               </a>
@@ -71,6 +71,22 @@ const LandPageHeader = ({isExpanded}) => {
                 <li><Link className="dropdown-item" to="/user-goals">Goals</Link></li>
                 <li><Link className="dropdown-item" to="/under-development">Settings</Link></li>
                 <li><button className="dropdown-item" onClick={signOut}>Sign out</button></li>
+              </ul>
+            </div>
+            <div className={!!currentUserAuth ? "d-block d-md-none nav-item dropdown ms-auto" : "d-none"}>
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <img className="header-img-size mt-2" src={require('../../../images/white-profile-border-icon.png')} alt="profil user" />
+                </li>
+                <li className="nav-item">
+                  <Link className={!!currentUserAuth ?  'nav-link btn d-md-none m-auto col-6' : 'd-none'}  to="/user-goals">Goals</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className={!!currentUserAuth ?  'nav-link btn d-md-none m-auto col-6' : 'd-none'}  to="/under-development">Settings</Link>
+                </li>
+                <li className="nav-item">
+                <button onClick={signOut} className={!!currentUserAuth ?  'nav-link btn d-md-none m-auto col-6' : 'd-none'}  to="/sign-in">Sign out</button>
+                </li>
               </ul>
             </div>
             <Link className={!!currentUserAuth ? 'd-none' : 'btn btn-light d-none d-md-block ms-auto'}  to="/sign-in">sign in</Link>

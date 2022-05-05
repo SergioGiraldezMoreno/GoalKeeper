@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import GenericHeader from '../../components/GenericHeader';
+import UserOptionsHeader from '../../components/UserOptionsHeader';
 import { AuthenticationContext } from '../../firebase/authentication';
 import { getUserInfoByEmailPromise, updateUserInfoPromise } from '../../firebase/userCollectionOperations';
 
@@ -36,7 +36,7 @@ const WelcomePageNewUser = () => {
 
     return (
         <>  
-            <GenericHeader />
+            <UserOptionsHeader />
             <div className='container mt-4'>
                 <form onSubmit={handleUserNickName} className='p-4 small-form mx-auto border border-dark border-2 rounded-3 text-center'>
                     <h1 className='text-center mt-3 mb-5'>Welcome to GoalKeeper</h1>

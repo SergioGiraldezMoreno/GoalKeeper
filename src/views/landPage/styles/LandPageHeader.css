@@ -10,7 +10,9 @@
 }
 
 .header-img-size {
+    min-height: 45px;
     height: 4vh;
+    width: auto;
 }
   
 .land-page-scroll-img {

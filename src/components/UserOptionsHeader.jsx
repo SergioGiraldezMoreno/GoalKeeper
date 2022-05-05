@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { AuthenticationContext } from '../firebase/authentication'
 import { signOutPromise } from "../firebase/userCollectionOperations";
 
-const GenericHeader = () => {
+const UserOptionsHeader = () => {
 
   const { currentUserAuth } = useContext(AuthenticationContext)
 
@@ -50,4 +50,4 @@ const GenericHeader = () => {
   )
 }
 
-export default GenericHeader
+export default UserOptionsHeader

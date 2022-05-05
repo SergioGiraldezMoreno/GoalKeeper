@@ -2,7 +2,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import React, { useContext, useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import CreateGoalPopup from './components/CreateGoalPopup'
-import GenericHeader from '../../components/GenericHeader'
+import UserOptionsHeader from '../../components/UserOptionsHeader'
 import UserAchievedGoalsSection from './components/UserAchievedGoalsSection'
 import UserCurrentGoalsSection from './components/UserCurrentGoalsSection'
 import UserGoalsTopSection from './components/UserGoalsTopSection'
@@ -35,7 +35,7 @@ const UserGoals = () => {
     } else if (!!currentUserAuth)  {
         return (
             <>  
-                <GenericHeader />
+                <UserOptionsHeader />
                 <CreateGoalPopup />
                 <div className='container py-3'>
                     <UserGoalsTopSection />

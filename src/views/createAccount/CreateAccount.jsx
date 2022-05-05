@@ -1,11 +1,11 @@
 import React from 'react'
-import GenericHeader from '../../components/GenericHeader'
+import UserOptionsHeader from '../../components/UserOptionsHeader'
 import CreateAccountForm from './components/CreateAccountForm'
 
 const CreateAccount = () => {
     return (
         <>
-            <GenericHeader />
+            <UserOptionsHeader />
             <div className='p-5'>
                 <CreateAccountForm />
             </div>
