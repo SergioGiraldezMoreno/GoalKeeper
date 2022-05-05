@@ -24,7 +24,8 @@ const CreateAccountForm = () => {
                 )
             },
             function(error){
-                // TODO: SHOW EXPLICIT ERROR
+                // IMPROVE THE ERROR SHOWING
+                alert(error.message)
                 console.log('Error code:', error.code)
                 console.log('msg: ', error.message)
             }

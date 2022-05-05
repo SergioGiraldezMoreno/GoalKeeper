@@ -11,11 +11,11 @@ const SignInForm = () => {
         const { email, password } = event.target.elements;
         signInEmailPromise(email.value, password.value).then(
             function(){
-                // REDIRECT TO USER PAGE
                 navigate("/user-goals", {replace: true})
                 console.log('User logged in')
             },
             function(error){
+                alert(error.message)
                 console.log('Error code:', error.code)
                 console.log('msg: ', error.message)
             }

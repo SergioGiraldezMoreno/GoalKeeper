@@ -18,7 +18,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `npm run build`
 
-As some of the files needed to build are private and not published on Github this option won't work properly.\
+As some of the files needed to build are private and not published on Github this option won't work properly.
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
