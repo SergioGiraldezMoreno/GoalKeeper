@@ -35,7 +35,7 @@ const LandPageHeader = ({isExpanded}) => {
               <div className={!!currentUserAuth ? "d-none" : "row"}>
                 <Link className={"ms-auto my-auto border-3 col-5 col-lg-3 btn btn-outline-dark h-100"} to="/create-account">create account</Link>
                 <span className='col-1'></span>
-                <Link className={"me-auto my-auto border-3 col-5 col-lg-3 btn btn-outline-dark h-100"} to="/sign-in">sign in</Link>
+                <Link className={"me-auto my-auto border-3 col-5 col-lg-3 btn btn-outline-dark h-100 d-flex align-items-center justify-content-center"} to="/sign-in">sign in</Link>
               </div>
               <div className={!!currentUserAuth ? "row" : "d-none"}>
                 <Link className={"ms-auto my-auto border-3 col-5 col-lg-3 btn btn-outline-dark h-100"} to="/user-goals">my account</Link>
