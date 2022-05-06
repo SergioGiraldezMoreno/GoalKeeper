@@ -28,8 +28,8 @@ const MilestoneField = (props) => {
     return (
         <div className='col d-flex align-items-center'>
             <input type="text" defaultValue={milestone.title} name="milestone" className="form-control me-2" placeholder='milestone title' onChange={updateTitleInfo} />
-            <input type="date" defaultValue={milestone.date} name="date" className="form-control" id="InputDeadline"  onChange={updateDateInfo} required/>
-            <button className='btn d-none d-md-block' onClick={clearDate} style={{position: "absolute", marginLeft: "71%", color:"red"}}>x</button>
+            <input aria-label="milestone-date" type="date" defaultValue={milestone.date} name="date" className="form-control" id="InputDeadline"  onChange={updateDateInfo} required/>
+            <button aria-label="clear-date-button" className='btn d-none d-md-block' onClick={clearDate} style={{position: "absolute", marginLeft: "71%", color:"red"}}>x</button>
         </div>
     )
 }

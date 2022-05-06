@@ -124,7 +124,7 @@ const CreateGoalPopup = () => {
                                     )}
                                 </div>
                                 <button className='btn p-0 mx-1' onClick={addMilestone} style={{width:"2.5em", height:"2.5em"}}>
-                                    <img onMouseOver={setHoverSrc} onMouseLeave={resetHoverSrc} className='h-100' src={require('../../../images/add-icon.png')} alt="" />
+                                    <img onMouseOver={setHoverSrc} onMouseLeave={resetHoverSrc} className='h-100' src={require('../../../images/add-icon.png')} alt="add milestone icon" />
                                 </button>
                             </fieldset>
                         </form>
