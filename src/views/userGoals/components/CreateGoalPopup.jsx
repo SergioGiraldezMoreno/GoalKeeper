@@ -19,6 +19,7 @@ const CreateGoalPopup = () => {
         var index = milestones.findIndex((milestone) => {
             return milestone.id === newMilestoneInfo.id;
         })
+
         milestones[index] = newMilestoneInfo;
         setMilestones([...milestones])
     }
