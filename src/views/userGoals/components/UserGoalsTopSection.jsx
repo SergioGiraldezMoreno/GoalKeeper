@@ -13,11 +13,10 @@ const UserGoalsTopSection = () => {
                     <TrophiesSection />
                 </div>
                 <div className='col-4 h-100 d-flex flex-column align-items-center'>
-                    <img className="h-100 mx-auto mb-auto" src={require('../../../images/white-profile-border-icon.png')} alt="" />
+                    <img className="h-100 mb-auto" src={require('../../../images/white-profile-border-icon.png')} alt="" />
                 </div>
             </div>
         </section>
-        
     )
 }
 

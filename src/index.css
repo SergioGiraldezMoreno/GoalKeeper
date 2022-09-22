@@ -7,7 +7,6 @@ html {
 
 body {
   min-height: 100vh;
-  height: 120%;
   min-height: -webkit-fill-available;
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(to bottom right, #ccccff 0%, #cc66ff 100%);
