@@ -6,7 +6,8 @@ const usersCollectionRef = collection(db, "users")
 
 const createUserInfo = async (email) => {
     const userRef = await addDoc(usersCollectionRef, { email: email, nickName: ''})
-    await addDoc(collection(db, 'users', userRef.id, 'goals'), { title: 'set up my account', done: false })
+    const newCollection = collection(db, 'users', userRef.id, 'goals');
+    addDoc(newCollection, { title: 'set up my account', done: false });
 }
 
 
@@ -63,10 +64,22 @@ function signOutPromise() {
     return promise
 }
 
+function createGoalPromise(userInfoId, goalInfo) {
+    let promise = new Promise((onSuccess, onFail) => {
+        const goalsCollectionRef = collection(db, 'users', userInfoId, 'goals');
+        addDoc(goalsCollectionRef, goalInfo)
+            .then(onSuccess)
+            .catch(onFail);
+    })
+    return promise
+}
+
+
 export {
     createUserPromise,
     signInEmailPromise,
     signOutPromise,
     updateUserInfoPromise,
-    getUserInfoByEmailPromise
+    getUserInfoByEmailPromise,
+    createGoalPromise
 }

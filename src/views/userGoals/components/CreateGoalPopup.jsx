@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import MilestoneField from './MilestoneField';
+import { AuthenticationContext } from '../../../firebase/authentication'
+import { createGoalPromise } from '../../../firebase/userCollectionOperations';
 
 const CreateGoalPopup = () => {
 
     // TODO: ADD THE OPTION TO SEND THE GOAL INFO AS ARGS AND OPEN THE POPUP WITH THE INFO FILLED
    
+    const { currentUserInfo, setCurrentUserInfo } = useContext(AuthenticationContext);
     const [milestones, setMilestones] = useState([
             { id: "1", title: "", date: "" }
           ]);
@@ -12,7 +15,18 @@ const CreateGoalPopup = () => {
     useEffect(()=>{},[milestones])
 
     const handleGoalCreation = (event) => {
-        console.log('under dev: create goal.')
+        console.log('creating goal')
+        console.log('event info:', event)
+        const goalInfo = {title: 'test goal', done: false}
+        createGoalPromise(currentUserInfo.id, goalInfo).then(
+            function(){
+                console.log('Goal created correctly')
+            },
+            function(error){
+                console.log('Error code:', error.code)
+                console.log('msg: ', error.message)
+            }
+        )
     }
 
     const updateMilestone = (newMilestoneInfo) => {
