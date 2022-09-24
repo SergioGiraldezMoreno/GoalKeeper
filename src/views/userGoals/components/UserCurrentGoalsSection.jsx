@@ -1,6 +1,28 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
+import { AuthenticationContext } from '../../../firebase/authentication'
+import { getUserGoalsPromise } from '../../../firebase/userCollectionOperations';
 
 const UserCurrentGoalsSection = () => {
+
+    const { currentUserInfo, setCurrentUserInfo } = useContext(AuthenticationContext);
+    const [goals, setGoals] = useState([]);
+
+    const parseGoals = () =>{
+        // LOAD THIS AND SET THE INFORMATION TO THE GOALS STATE
+        getUserGoalsPromise(currentUserInfo.id).then(
+            function(response){
+                console.log('GOALS INFO:')
+                console.log(response)
+                // const goalsInfo = {...response.docs[0].data(), id: response.docs[0].id}
+                // setGoals(goalsInfo)
+            },
+            function(error){
+                console.log('Error code:', error.code)
+                console.log('msg: ', error.message)
+            }
+        )
+    }
+
     return (
         <section className='mt-4'>
             <div className='row d-flex border-bottom border-2 border-dark pb-1 px-1'>
@@ -18,6 +40,15 @@ const UserCurrentGoalsSection = () => {
                         </tr>
                     </thead>
                     <tbody>
+
+                        { goals.map((item, idx)=>{
+                            return <tr>
+                                        <th scope="row">Goal</th>
+                                        <td>25%</td>
+                                        <td>Detail 1</td>
+                                        <td>edit btn</td>
+                                    </tr>
+                        })}
                         <tr>
                             <th scope="row">Goal 1</th>
                             <td>25%</td>

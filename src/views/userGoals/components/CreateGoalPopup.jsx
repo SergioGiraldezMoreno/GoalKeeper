@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useRef } from 'react'
 import MilestoneField from './MilestoneField';
 import { AuthenticationContext } from '../../../firebase/authentication'
 import { createGoalPromise } from '../../../firebase/userCollectionOperations';
@@ -12,14 +12,17 @@ const CreateGoalPopup = () => {
             { id: "1", title: "", date: "" }
           ]);
 
+    const titleRef = useRef()
+
     useEffect(()=>{},[milestones])
 
     const handleGoalCreation = (event) => {
         console.log('creating goal')
         console.log('event info:', event)
-        const goalInfo = {title: 'test goal', done: false}
+        const goalInfo = {title: titleRef.current.value, done: false}
         createGoalPromise(currentUserInfo.id, goalInfo).then(
             function(){
+                // here the goal panel should be updated
                 console.log('Goal created correctly')
             },
             function(error){
@@ -101,7 +104,7 @@ const CreateGoalPopup = () => {
                         <form className='mx-auto rounded-3 text-center'>
                             <div className="mb-3 text-start row">
                                 <div className='col d-flex align-items-center'>
-                                    <input type="name" name="name" className="form-control" placeholder="Title" id="InputGoalName" required/>
+                                    <input type="name" name="name" ref={titleRef} className="form-control" placeholder="Title" id="InputGoalName" required/>
                                 </div>
                                 <div className='col d-flex align-items-center ps-0'>
                                     <select className="form-select" aria-label=".form-select-sm">

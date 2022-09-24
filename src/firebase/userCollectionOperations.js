@@ -6,8 +6,7 @@ const usersCollectionRef = collection(db, "users")
 
 const createUserInfo = async (email) => {
     const userRef = await addDoc(usersCollectionRef, { email: email, nickName: ''})
-    const newCollection = collection(db, 'users', userRef.id, 'goals');
-    addDoc(newCollection, { title: 'set up my account', done: false });
+    await createGoalPromise(userRef.id, { title: 'set up my account', done: false })
 }
 
 
@@ -64,10 +63,20 @@ function signOutPromise() {
     return promise
 }
 
-function createGoalPromise(userInfoId, goalInfo) {
+const createGoalPromise = async (userInfoId, goalInfo) => {
     let promise = new Promise((onSuccess, onFail) => {
         const goalsCollectionRef = collection(db, 'users', userInfoId, 'goals');
         addDoc(goalsCollectionRef, goalInfo)
+            .then(onSuccess)
+            .catch(onFail);
+    })
+    return promise
+}
+
+const getUserGoalsPromise = async (userInfoId) => {
+    let promise = new Promise((onSuccess, onFail) => {
+        const goalsCollectionRef = collection(db, 'users', userInfoId, 'goals');
+        goalsCollectionRef.get()
             .then(onSuccess)
             .catch(onFail);
     })
@@ -81,5 +90,6 @@ export {
     signOutPromise,
     updateUserInfoPromise,
     getUserInfoByEmailPromise,
-    createGoalPromise
+    createGoalPromise,
+    getUserGoalsPromise
 }
