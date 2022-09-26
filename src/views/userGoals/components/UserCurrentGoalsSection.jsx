@@ -34,9 +34,9 @@ const UserCurrentGoalsSection = () => {
                 <table className='table table-hover border-dark'>
                     <thead>
                         <tr>
-                            <th className='col-5' scope="col">Name</th>
+                            <th className='col-3' scope="col">Name</th>
                             <th className='col-2' scope="col">Progress</th>
-                            <th className='col-4' scope="col">Details</th>
+                            <th className='col-6' scope="col">Description</th>
                             <th className='col-1' scope="col"></th>
                         </tr>
                     </thead>
@@ -45,8 +45,8 @@ const UserCurrentGoalsSection = () => {
                         { goals.map((item, idx)=>{
                             return <tr key={idx}>
                                         <th scope="row">{item.title}</th>
-                                        <td>25%</td>
-                                        <td>Detail {idx}</td>
+                                        <td>In progress</td>
+                                        <td>{item.description}</td>
                                         <td>edit btn</td>
                                     </tr>
                         })}

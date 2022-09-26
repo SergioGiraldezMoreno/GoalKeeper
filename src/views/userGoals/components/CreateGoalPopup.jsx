@@ -13,13 +13,12 @@ const CreateGoalPopup = () => {
           ]);
 
     const titleRef = useRef()
+    const descriptionRef = useRef()
 
     useEffect(()=>{},[milestones])
 
     const handleGoalCreation = (event) => {
-        console.log('creating goal')
-        console.log('event info:', event)
-        const goalInfo = {title: titleRef.current.value, done: false}
+        const goalInfo = {title: titleRef.current.value, description:descriptionRef.current.value, done: false}
         createGoalPromise(currentUserInfo.id, goalInfo).then(
             function(){
                 console.log('Goal created correctly')
@@ -111,12 +110,15 @@ const CreateGoalPopup = () => {
                                         <option value="1">Sport</option>
                                         <option value="2">Food</option>
                                         <option value="3">Study</option>
-                                        <option value="4">Custom</option> 
+                                        <option value="4">Business</option>
+                                        <option value="5">Other</option> 
                                         {/* TODO: ADD CATEGORY CREATION */}
                                     </select>
                                 </div>
                             </div>
-                            {/* TODO: add more fields */}
+                            <div>
+                                <textarea name="description" ref={descriptionRef} className="mb-3 form-control" id="description" rows="4"  placeholder='Description' style={{resize: 'none'}}/>
+                            </div>
                             <fieldset className='form-group border p-2'>
                                 <div className='row'>
                                     <h3 className='d-block col'>Milestones</h3>
