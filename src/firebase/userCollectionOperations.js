@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, query, where, updateDoc, doc } from "firebase/firestore"
+import { collection, addDoc, getDocs, query, where, updateDoc, doc, onSnapshot, orderBy } from "firebase/firestore"
 import firebaseApp, { db } from "./firebaseConfig"
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
@@ -76,11 +76,18 @@ const createGoalPromise = async (userInfoId, goalInfo) => {
 const getUserGoalsPromise = async (userInfoId) => {
     let promise = new Promise((onSuccess, onFail) => {
         const goalsCollectionRef = collection(db, 'users', userInfoId, 'goals');
-        goalsCollectionRef.get()
+        getDocs(goalsCollectionRef)
             .then(onSuccess)
             .catch(onFail);
     })
     return promise
+}
+
+
+function getGoalsStream(userInfoId, snapshot, error) {
+    const itemsColRef = collection(db, 'users', userInfoId, 'goals');
+    const itemsQuery = query(itemsColRef, orderBy('title'))
+    return onSnapshot(itemsQuery, snapshot, error);
 }
 
 
@@ -91,5 +98,6 @@ export {
     updateUserInfoPromise,
     getUserInfoByEmailPromise,
     createGoalPromise,
-    getUserGoalsPromise
+    getUserGoalsPromise,
+    getGoalsStream
 }

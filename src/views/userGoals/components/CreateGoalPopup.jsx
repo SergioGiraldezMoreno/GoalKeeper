@@ -7,7 +7,7 @@ const CreateGoalPopup = () => {
 
     // TODO: ADD THE OPTION TO SEND THE GOAL INFO AS ARGS AND OPEN THE POPUP WITH THE INFO FILLED
    
-    const { currentUserInfo, setCurrentUserInfo } = useContext(AuthenticationContext);
+    const { currentUserInfo } = useContext(AuthenticationContext);
     const [milestones, setMilestones] = useState([
             { id: "1", title: "", date: "" }
           ]);
@@ -22,7 +22,6 @@ const CreateGoalPopup = () => {
         const goalInfo = {title: titleRef.current.value, done: false}
         createGoalPromise(currentUserInfo.id, goalInfo).then(
             function(){
-                // here the goal panel should be updated
                 console.log('Goal created correctly')
             },
             function(error){
