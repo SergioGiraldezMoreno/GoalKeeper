@@ -6,7 +6,12 @@ const usersCollectionRef = collection(db, "users")
 
 const createUserInfo = async (email) => {
     const userRef = await addDoc(usersCollectionRef, { email: email, nickName: ''})
-    await createGoalPromise(userRef.id, { title: 'set up my account', done: false })
+    const initialGoal = {
+        title: 'set up my account',
+        description:'Add and image and create some new goals',
+        done: false
+    }
+    await createGoalPromise(userRef.id, initialGoal)
 }
 
 

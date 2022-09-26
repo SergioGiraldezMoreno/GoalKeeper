@@ -18,7 +18,11 @@ const CreateGoalPopup = () => {
     useEffect(()=>{},[milestones])
 
     const handleGoalCreation = (event) => {
-        const goalInfo = {title: titleRef.current.value, description:descriptionRef.current.value, done: false}
+        const goalInfo = {
+            title: titleRef.current.value,
+            description:descriptionRef.current.value,
+            done: false
+        }
         createGoalPromise(currentUserInfo.id, goalInfo).then(
             function(){
                 console.log('Goal created correctly')

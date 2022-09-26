@@ -1,6 +1,35 @@
-import React from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { AuthenticationContext } from '../../../firebase/authentication'
+import { getGoalsStream } from '../../../firebase/userCollectionOperations';
 
 const UserAchievedGoalsSection = () => {
+
+    
+    const { currentUserInfo } = useContext(AuthenticationContext);
+    const [goals, setGoals] = useState([]);
+
+    const parseGoals = (snapshot) =>{
+        const updatedGoals = snapshot.docs.map(docSnapshot => docSnapshot.data());
+        const doneGoals = updatedGoals.filter((goal) => {
+            return goal.done;
+        })
+        setGoals(doneGoals);
+    }
+
+    useEffect(() => {
+        if (currentUserInfo) {
+            const unsubscribe = getGoalsStream(currentUserInfo.id,
+                (querySnapshot) => {
+                    parseGoals(querySnapshot)
+                },
+                (error) => console.log('Failed loading the goals')
+            );
+            return unsubscribe;
+        }
+    }, [currentUserInfo, setGoals]);
+
+
+
   return (
     <section className='mt-4'>
             <div className='row d-flex border-bottom border-2 border-dark pb-1 pt-2 px-1'>
@@ -10,33 +39,20 @@ const UserAchievedGoalsSection = () => {
                 <table className='table table-hover border-dark'>
                     <thead>
                         <tr>
-                            <th className='col-5' scope="col">Name</th>
-                            <th className='col-2' scope="col">Progress</th>
-                            <th className='col-4' scope="col">Details</th>
-                            <th className='col-1' scope="col"></th>
+                            <th className='col-3' scope="col">Name</th>
+                            <th className='col-2' scope="col">Completition date</th>
+                            <th className='col-5' scope="col">Description</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">Goal 5</th>
-                            <td>100%</td>
-                            <td>Detail 1</td>
-                            <td>edit btn</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Goal 12</th>
-                            <td>100%</td>
-                            <td>Detail 2</td>
-                            <td>edit btn</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Goal 5</th>
-                            <td>100%</td>
-                            <td>Detail 3</td>
-                            <td>edit btn</td>
-                        </tr>
+                        { goals.map((item, idx)=>{
+                            return <tr key={idx}>
+                                        <th scope="row">{item.title}</th>
+                                        <td>In progress</td> {/* TODO: add completition date when marking the goal as done*/}
+                                        <td>{item.description}</td>
+                                    </tr>
+                        })}
                     </tbody>
-                    {/* TODO: IMPLEMENT LIST WITH FOR USING STATE OF GOALS */}
                 </table>
             </div>
         </section>

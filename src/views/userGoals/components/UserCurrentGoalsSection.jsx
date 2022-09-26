@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { AuthenticationContext } from '../../../firebase/authentication'
 import { getGoalsStream } from '../../../firebase/userCollectionOperations';
+import '../styles/UserGoals.css';
+import GoalRow from './GoalRow';
 
 const UserCurrentGoalsSection = () => {
 
@@ -9,7 +11,10 @@ const UserCurrentGoalsSection = () => {
 
     const parseGoals = (snapshot) =>{
         const updatedGoals = snapshot.docs.map(docSnapshot => docSnapshot.data());
-        setGoals(updatedGoals);
+        const doneGoals = updatedGoals.filter((goal) => {
+            return !goal.done;
+        })
+        setGoals(doneGoals);
     }
 
     useEffect(() => {
@@ -36,22 +41,19 @@ const UserCurrentGoalsSection = () => {
                         <tr>
                             <th className='col-3' scope="col">Name</th>
                             <th className='col-2' scope="col">Progress</th>
-                            <th className='col-6' scope="col">Description</th>
-                            <th className='col-1' scope="col"></th>
+                            <th className='col-5' scope="col">Description</th>
                         </tr>
                     </thead>
                     <tbody>
-
                         { goals.map((item, idx)=>{
-                            return <tr key={idx}>
-                                        <th scope="row">{item.title}</th>
-                                        <td>In progress</td>
-                                        <td>{item.description}</td>
-                                        <td>edit btn</td>
-                                    </tr>
+                            return <GoalRow key={idx} goal={item} />
+                            // return <tr key={idx}>
+                            //             <th scope="row">{item.title}</th>
+                            //             <td>In progress</td>
+                            //             <td>{item.description}</td>
+                            //         </tr>
                         })}
                     </tbody>
-                    {/* TODO: IMPLEMENT LIST WITH FOR USING STATE OF GOALS */}
                 </table>
             </div>
         </section>
